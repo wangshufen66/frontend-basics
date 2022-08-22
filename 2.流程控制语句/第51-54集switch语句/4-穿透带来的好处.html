@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>今天是工作日还是休息日?</button>
+    <script>
+
+        /*
+            1-5
+            6-7
+        */
+
+
+        var btn = document.querySelector('button');
+        var txt = document.querySelector('input');
+        btn.onclick = function(){
+            var value = txt.value;
+
+            switch(value){
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                    console.log('今天是工作日');
+                    break;
+                case '6':
+                case '7': 
+                    console.log('今天是休息日'); 
+            }
+        }
+        /*
+            有时候利用这样的穿透性，可以让我们的代码变得更简洁，性能更好
+        */
+    </script>
+</body>
+</html>

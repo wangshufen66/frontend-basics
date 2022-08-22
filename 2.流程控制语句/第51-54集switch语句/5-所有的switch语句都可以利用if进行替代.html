@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>今天是工作日还是休息日?</button>
+    <script>
+        var btn = document.querySelector('button');
+        var txt = document.querySelector('input');
+        btn.onclick = function(){
+            var value = txt.value;
+
+            switch (value) {
+                
+                case '1':
+                case '2':
+                case '3':
+                
+                case '4':
+                case '5':
+                    console.log('今天是工作日');
+                    break;
+                case '6':
+                case '7':
+                    console.log('今天是休息日');
+                    break;
+                default:
+                    console.log('以上输入的内容有误');
+                    break;
+            }
+
+            // if(value === '1' || value === '2' ||value === '3'){
+            //     console.log('今天是工作日');
+            // }else if(value === '6'||value === '7'){
+            //     console.log('今天是休息日');
+            // }else{
+            //     console.log('以上输入的内容有误');
+            // }
+
+            /*
+                当以上条件都不满足的时候，我们在if语句中可以使用else
+                                            在switch语句中可以使用default
+
+                default 可以写在switch中的任何位置，不过推荐写在最下面
+                注意：可以使用switch的时候 我们不推荐使用if .. else if..else
+
+                
+            */
+        }
+    </script>
+</body>
+</html>

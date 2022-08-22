@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>今天星期几？</button>
+    <script>
+        /*
+            穿透：
+            找到对应的匹配项之后，从该匹配项执行，一直到代码的结束
+
+            break
+        */
+
+
+        var btn = document.querySelector('button');
+        var txt = document.querySelector('input');
+
+        btn.onclick = function () {
+            var value = txt.value;
+
+            switch (value) {
+                case '1':
+                    console.log('今天星期一');
+                    break;
+                case '2':
+                    console.log('今天星期二');
+                    break;
+                case '3':
+                    console.log('今天星期三');
+                    break;
+                case '4':
+                    console.log('今天星期四');
+                    break;
+
+            }
+
+        }
+    </script>
+</body>
+</html>

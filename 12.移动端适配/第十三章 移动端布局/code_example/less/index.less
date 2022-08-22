@@ -1,0 +1,48 @@
+@rem: 64rem;
+
+body,
+h1{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+.header{
+    height: 88 / @rem;
+    position: fixed;
+    background: #ef3239;
+}
+.menu{
+    position: absolute;
+    width: 88 / @rem;
+    height: 88 / @rem;
+    text-indent: -999em;
+    overflow: hidden;
+    font-size: 0;
+    &::before{
+        content: '';
+        width: 31 / @rem;
+        height: 23 / @rem;
+        background: #fff;
+        display: block;
+        margin: 27 / @rem 0 0 36 / @rem;
+    }
+}
+.refresh{
+    &:extend(.menu);
+    right: 0;
+    top: 0;
+    &::before{
+        content: '';
+        width: 26 / @rem;
+        height: 30 / @rem;
+        display: block;
+        background: #fff;
+        margin: 22 / @rem 36 / @rem 0 0 ;
+    }
+}
+.logo{
+    font: (34 / @rem) ~'/' (88 / @rem) "微软雅黑";
+    text-align: center;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+    <script>
+        var btn = document.querySelector('button');
+        var onOff = true;
+        btn.onclick = function(){
+            if(onOff){
+                alert('左边');
+            }else{
+                alert('右边')
+            }
+            onOff = !onOff;
+        }
+    </script>
+</body>
+</html>

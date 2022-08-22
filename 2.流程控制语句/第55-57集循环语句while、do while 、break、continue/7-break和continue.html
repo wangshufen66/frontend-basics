@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var arr = [10, 420, 50, 25, 28, 46];
+
+        // var num = 26;
+
+        // for (var i = 0; i < arr.length; i++) {
+        //     if (arr[i] > 26) {
+        //         alert(arr[i]);
+        //         break;
+        //     }
+        // }
+
+
+        // for(var i = 0;i<3;i++){
+        //     for(var j = 0;j<5;j++){
+        //         console.log(i,j)
+        //         if(j==3){
+        //             break;
+        //         }
+        //     }
+        //     if(i == 1){
+        //         break;
+        //         alert('你好');
+        //     }
+        // }
+        /*
+            0 0
+            0 1
+            0 2
+            0 3
+
+            ????后续还会不会执行
+        */
+
+        /*
+            break:跳出**当前**循环
+        */
+
+
+        
+        for(var i = 0;i<10;i++){
+            
+            if(i == 5){
+                //break; 直接跳出循环了，不会执行后面我们想要的6 7 8 9 
+                continue;
+            }
+            console.log(i); // 如果说遇到5的话 ，我就希望不执行
+        }
+
+        /*
+            continue 可以终止当前这次循环，但是不会跳出循环，他会跳过当前这次的循环执行下一次的循环
+        */
+    </script>
+</body>
+</html>

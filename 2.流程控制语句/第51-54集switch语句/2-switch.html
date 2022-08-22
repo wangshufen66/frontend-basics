@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>今天星期几？</button>
+    <script>
+        /*
+            switch(表达式 || 变量){
+                case value1:
+                    console.log('满足1的条件');
+                case value2:
+                    console.log('满足2的条件');
+                default:
+                    console.log('以上条件都不满足');
+            }
+
+            表达式 || 变量 和 value 做的是全等（===）的比较
+        */
+
+        
+        /*
+            1 ~ 7的数字 代表对应  星期数 
+        */
+
+        var btn = document.querySelector('button');
+        var txt = document.querySelector('input');
+
+        btn.onclick = function(){
+            var value = txt.value;
+
+            switch(value){
+                case '1':
+                    console.log('今天星期一');
+                case '2':
+                    console.log('今天星期二');
+                case '3':
+                    console.log('今天星期三');
+                case '4':
+                    console.log('今天星期四');
+                    
+            }
+
+        }
+
+    </script>
+</body>
+</html>
