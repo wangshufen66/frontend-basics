@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <button>获取用户列表</button>
+    <ul></ul>
+
+
+    <script>
+        let buttonElement = document.querySelector('button');
+        let ulElement = document.querySelector('ul');
+
+
+        // 每次获取到的数据总数
+        let len = 0;
+
+
+        buttonElement.onclick = function() {
+            getUsers();
+        }
+
+
+        function getUsers() {
+            let xhr = new XMLHttpRequest();
+
+            xhr.open('get', '/users?n=' + len);
+
+            xhr.onload = function() {
+                let users = JSON.parse(this.responseText);
+
+
+                len = users.length;
+
+                ulElement.innerHTML = '';
+                users.forEach(user => {
+                    let liElement = document.createElement('li');
+                    liElement.innerHTML = user.username;
+                    ulElement.appendChild(liElement);
+                });
+
+                // 当这次请求完成以后，间隔1S，再次发送请求
+                setTimeout(() => {
+                    getUsers();
+                }, 1000);
+            }
+
+            xhr.send();
+        }
+    </script>
+
+</body>
+</html>

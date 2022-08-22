@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// ES11 ES2020;
+// globalThis (前端、nodejs)
+// console.log(globalThis);
+// function getGlobal(){
+//     if(typeof window !== "undefined"){
+//         return window;
+//     }else if (typeof self !== "undefined"){
+//         return self;
+//     }else if(typeof global !== 'undefined'){
+//         return global;
+//     }
+// }
+
+// console.log(getGlobal());
+
+// 空合并运算符
+// function fn(name,age){
+//     // name = name || "张三";
+//     // age = age || 18;
+//     name = name ?? "张三";
+//     age = age ?? 18;
+//     return {name,age};
+// }
+
+// console.log( fn("李四",""));
+
+
+// 可选链操作符
+// let user = {
+//     name:{
+//         age:18
+//     }
+// };
+// // let age = user.name && user.name.age;
+// // console.log(age);
+
+// let age = user?.name?.age;
+// console.log(age);
+
+// bigint
+
+const max = Number.MAX_SAFE_INTEGER;
+console.log(max);
+// console.log(max + 4);
+// console.log(max + 6);
+// console.log(4n);
+console.log(BigInt(max) + 4n);
+console.log(BigInt(max) + 6n);
+
+
+
+
+</script>
+</html>

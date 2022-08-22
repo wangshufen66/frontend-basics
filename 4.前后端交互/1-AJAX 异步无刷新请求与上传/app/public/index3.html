@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>AJAX</h1>
+
+    <button>获取所有用户</button>
+
+    <script>
+
+        let btns = document.querySelectorAll('button');
+
+
+        btns[0].onclick = function() {
+            // 被浏览器所执行 - 调用浏览器提供的 API 来发送请求 - XMLHttpRequest 对象
+
+            // 打开浏览器
+            let xhr = new XMLHttpRequest();
+
+            // 在地址栏中输入url（填写请求配置）
+            xhr.open('get', '/users', true);
+
+            // 点击发送（跳转）、回车
+            xhr.send();
+
+            // 等待接收数据并进行后续处理（渲染）
+            /**
+             * 后续数据的接收和处理取决于 发送的时候填写的配置：是否是异步的
+             *  - 异步：事件回调
+             *  - 同步：直接调用对应的属性和方法拿取数据
+             */
+
+            // console.log('后端返回的内容', xhr.responseText);
+
+            xhr.onload = function() {
+                console.log('后端返回的内容', xhr.responseText);
+            }
+
+            console.log('后续的任务');
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es5",
+    "watch": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true, //当函数参数出现隐含的 `any` 类型时报错
+    "lib": ["dom", "es6", "scripthost"]
+  },
+
+  // ** : 所有目录（包括子目录）
+  // * : 所有文件，也可以指定类型 *.ts
+
+  "include": ["./src/**/*"]
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <button>连接到websocket服务器</button>
+
+
+    <script src="/public/js/socket.io.min.js"></script>
+    <script>
+
+        let buttonElements = document.querySelectorAll('button');
+
+        let socket;
+
+
+        // 连接websocket
+        buttonElements[0].onclick = function() {
+            // websocket 协议是基于 http 协议连接，连接成功确立以后，升级为 ws 协议进行通信
+            socket = io('http://localhost:8888');
+
+            socket.emit('username', {
+                username: 'zMouse'
+            });
+
+            socket.on('hello', (data) => {
+                console.log('服务器：', data);
+            })
+        }
+
+    </script>
+</body>
+</html>

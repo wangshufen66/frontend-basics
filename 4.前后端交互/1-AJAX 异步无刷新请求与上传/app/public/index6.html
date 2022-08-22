@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>AJAX</h1>
+
+    <button>获取指定id的用户信息</button>
+    <input type="text" id="user_id">
+
+
+    <script>
+
+        let btns = document.querySelectorAll('button');
+        let userIdElement = document.querySelector('#user_id');
+
+
+        btns[0].onclick = function() {
+            let userId = userIdElement.value;
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.open('get', `/user/${userId}`, true);
+
+            xhr.send();
+
+
+            xhr.onload = function() {
+
+                console.log(this.responseText);
+
+            }
+
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

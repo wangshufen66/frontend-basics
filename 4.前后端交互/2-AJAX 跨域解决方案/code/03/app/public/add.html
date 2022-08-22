@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div><button>登录</button></div>
+
+    <div>
+       <p>
+            用户名：<input type="text" id="username">
+        </p>
+        <p>
+            <button>添加</button>
+        </p>
+    </div>
+
+    <script>
+        let usernameElement = document.querySelector('#username');
+        let buttonElements = document.querySelectorAll('button');
+
+        buttonElements[0].onclick = function() {
+            let xhr = new XMLHttpRequest();
+
+            xhr.open('post', 'http://localhost:8888/login');
+
+            xhr.onload = function () {
+                console.log(this.responseText);
+            }
+
+            xhr.withCredentials = true;
+            let fd = new FormData();
+            xhr.send(fd);
+        }
+
+        buttonElements[1].onclick = function() {
+            let xhr = new XMLHttpRequest();
+
+            xhr.open('post', 'http://localhost:8888/add');
+
+            xhr.onload = function () {
+                console.log(this.responseText);
+            }
+
+            // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // xhr.send('username=' + usernameElement.value);
+
+            xhr.withCredentials = true;
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                username: usernameElement.value
+            }))
+        }
+    </script>
+
+</body>
+</html>

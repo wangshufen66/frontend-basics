@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <button>获取用户列表</button>
+    <ul></ul>
+
+
+    <script>
+        let buttonElement = document.querySelector('button');
+        let ulElement = document.querySelector('ul');
+
+
+        buttonElement.onclick = function() {
+            getUsers();
+        }
+
+
+        function getUsers() {
+            let eventSource = new EventSource('/users');
+
+            eventSource.addEventListener('users', function(e) {
+                console.log(`users`, e);
+
+                let users = JSON.parse(e.data);
+
+                ulElement.innerHTML = '';
+                users.forEach(user => {
+                    let liElement = document.createElement('li');
+                    liElement.innerHTML = user.username;
+                    ulElement.appendChild(liElement);
+                })
+            })
+
+            eventSource.onmessage = function(e) {
+                console.log(`message`, e);
+
+                let users = JSON.parse(e.data);
+
+                ulElement.innerHTML = '';
+                users.forEach(user => {
+                    let liElement = document.createElement('li');
+                    liElement.innerHTML = user.username;
+                    ulElement.appendChild(liElement);
+                })
+            }
+        }
+    </script>
+
+</body>
+</html>

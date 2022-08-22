@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var  a = 10;
+    // let a = 10;
+    // let a = 10;
+    // const name = "张三";
+    // name = "李四";
+    // co
+
+    // obj = {};
+    // obj.name = "李四";
+    // console.log(obj);
+
+    // 不可变数据
+    // Object.freeze(obj);
+    // // obj.name = "李四";
+    // obj.hobby.one = "足球";
+    // console.log(obj);
+
+    //    deepFreeze 深冻结数据
+    // function deepFreeze(obj){
+    //     Object.freeze(obj);
+    //     for(let i in obj){
+    //         if(obj.hasOwnProperty(i)){
+    //             if(typeof obj[i] === 'object'){
+    //                 deepFreeze(obj[i]);
+    //             }
+    //         }
+    //     }
+    // }
+    // deepFreeze(obj);
+    // obj.hobby.one = "足球";
+    // console.log(obj);
+
+
+    // 结构赋值；
+    // let obj = {
+    //     name:"张三",
+    //     age:20,
+    //     hobby:{
+    //         one:"篮球"
+    //     }
+    // }
+
+    // let {name:myname,age,hobby:{one}} = obj;
+    // console.log(myname,age,one);
+
+    // 展开运算符号
+    // let obj = {
+    //     name:"张三",
+    //     age:20,
+    //     hobby:{
+    //         one:"篮球"
+    //     }
+    // }
+    // let newObj = {he ight:"178cm",...obj};
+    // console.log(newObj);
+
+    // function test(...args){
+    //     // console.log(arguments);
+    //     console.log(args);
+    // }
+
+    // test(1,2);
+    // set  map
+    // let obj = {
+    //     name:"张三",
+    //     age:20,
+    //     [document]:"值"
+    // }
+
+    // for(let i in obj){
+    //     console.log(typeof i);
+    // }
+
+    // let map = new Map();
+
+    // map.set("name","张三");
+    // map.set("age",20);
+    // map.set(document,'值');
+    // console.log( map);
+
+    // let vm = new Map();
+    // let vm = new WeakMap();
+    // let container = {
+    //     key:{}
+    // }
+    // vm.set(container.key,"val");
+    // container.key = null;
+    // console.log(vm);
+
+    // set 
+    // let set = new Set([1,2,3,3,4,4]);
+    // console.log(set);
+
+    // symbol :唯一标识符
+    // let s1 = Symbol("key1");
+    // let s2 = Symbol("key2");
+    // console.log(s1===s2);
+    // let obj = {
+    //     [Symbol("key")]:"值",
+    //     name:"张三"
+    // }
+  
+    // let res =  Object.getOwnPropertySymbols(obj);
+    // // console.log(res);
+    // console.log(obj[res[0]]);
+
+    // let cate = {
+    //     person:Symbol("key1"),
+    //     dog:Symbol("key2")
+    // }
+
+    // function getCate(type){
+    //     if(type===cate.person){
+    //         console.log("人");
+    //     }else if(type ===cate.dog){
+    //         console.log("狗")
+    //     }
+    // }
+    // getCate(cate.dog);
+
+    // 箭头语法
+    // let f = function (v) {
+    //     return v;
+    // }
+    // let f = v=>v;
+    // console.log( f(10));
+    // let f = v=>{
+    //     return {  
+    //         name:"张三"
+    //     }
+    // }
+    // let f = ()=>({name:"张三"});
+    // console.log(f());
+
+
+    // var、let 及 const 区别？
+
+    // {
+    //     var a = 10;
+
+    // }
+    // console.log(a);
+    // console.log(a);
+    // let a = 10;
+
+    // let a = 10;
+    // console.log(window.a);
+
+    // 说一下 ES6 对 Object 类型做了哪些优化更新?
+    // 优化部分
+    // let name = "张三";
+    // let age = 20;
+
+    // let obj = {name:name,age:age};
+    // console.log(obj);
+    // let obj = {
+    //     // fn:function(){
+    //     //     console.log("fn");
+    //     // }
+    //     fn(){
+    //         console.log("fn"); 
+    //     }
+    // }
+    // obj.fn();
+
+    // let obj = {
+    //     myname: "张三",
+    //     age: 20
+    // }
+
+    // let { myname, age } = obj;
+    // ... 
+
+    // 更新部分  
+    // Object.is  Object.assign getOwnPropertyDescriptors;
+    // Object.getPrototypeOf  Object.setPrototypeOf 
+    // Object.keys Object.values...
+
+</script>
+
+</html>

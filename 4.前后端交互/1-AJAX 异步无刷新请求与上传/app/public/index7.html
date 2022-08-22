@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>AJAX</h1>
+
+    <button value="">所有</button>
+    <button value="男">男</button>
+    <button value="女">女</button>
+
+    <ul id="list"></ul>
+
+    <script>
+
+        let btns = document.querySelectorAll('button');
+        let listElement = document.querySelector('#list');
+
+
+        btns.forEach(btn => {
+            btn.onclick = function() {
+                let xhr = new XMLHttpRequest();
+
+                xhr.open('get', `/users?gender=${this.value}`, true);
+
+                xhr.send();
+
+                xhr.onload = function() {
+
+                    console.log(this.responseText);
+
+                    let res = JSON.parse(this.responseText);
+
+                    listElement.innerHTML = '';
+                    res.data.forEach(d => {
+                        let liElement = document.createElement('li');
+                        liElement.innerHTML = d.username;
+                        listElement.appendChild(liElement);
+                    })
+
+                }
+            }
+        })
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var promise = new Promise(function (resolve, reject) {
+    //     setTimeout(function () {
+    //         resolve(1);
+    //     }, 1000)
+    // })
+
+
+    // 1  --->2
+    // promise.then(() => {
+    //   return Promise.resolve(2);
+    // }).then((n) => {
+    //   console.log(n)
+    // });
+
+    // // 2
+    // promise.then(() => {
+    //   return 2
+    // }).then((n) => {
+    //   console.log(n)
+    // });
+
+    // // 3
+    // promise.then({}).then((n) => {
+    //   console.log(n)
+    // });
+
+
+
+
+    // 同步 ： console.log('promise1');   console.log(a); console.log('end');
+    // 异步 ：console.log('promise2');  console.log('promise3'); console.log('promise4');
+    //  console.log(a); console.log('after1'); resolve(true); console.log('after2');
+    // 打印结果 同步：promise2promise1->undefined->end
+    // 异步：promise2->promise3->promise4->Promsie对象 ->after1
+    // let a;
+    // const b = new Promise((resolve, reject) => {
+    //     console.log('promise1');
+    //     resolve();
+    // }).then(() => {
+    //     console.log('promise2');
+    // }).then(() => {
+    //     console.log('promise3');
+    // }).then(() => {
+    //     console.log('promise4');
+    // });
+
+    // a = new Promise(async (resolve, reject) => {
+    //   console.log(a);
+    //   await b;
+    //   console.log(a);
+    //   console.log('after1');
+    //   await a
+    //   resolve(true);
+    //   console.log('after2');
+    // });
+    // // a = new Promise((resolve, reject) => {
+    // //     console.log(a);
+    // //     return Promise.resolve(b).then(() => {
+    // //         console.log(a);
+    // //         console.log('after1');
+    // //         return Promise.resolve(a).then(() => {
+    // //             resolve(true);
+    // //             console.log('after2');
+    // //         })
+    // //     })
+    // // })
+    // console.log('end');
+
+
+
+
+
+    const timeout = (ms) =>
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve();
+            }, ms);
+        });
+    const ajax1 = () =>
+        timeout(2000).then(() => {
+            console.log("1");
+            return 1;
+        });
+    const ajax2 = () =>
+        timeout(1000).then(() => {
+            console.log("2");
+            return 2;
+        });
+    const ajax3 = () =>
+        timeout(2000).then(() => {
+            console.log("3");
+            return 3;
+        });
+
+    // const mergePromise = (ajaxArray) => {
+    //     // 1,2,3 done [1,2,3] 
+    //     let resArr = [];
+    //     let num = 0;
+    //     return new Promise(resolve=>{
+    //         ajaxArray.forEach(item=>{
+    //             item().then(res=>{
+    //                 resArr.push(res);
+    //                 num++;
+    //                 if(num===ajaxArray.length){
+    //                     resolve(resArr);
+    //                 }
+    //             })
+    //         })
+    //     })
+    // };
+
+    // async - await 控制顺序
+    // const mergePromise = (ajaxArray) => {
+    //     // 1,2,3 done [1,2,3] 
+    //     let resArr = [];
+    //     return new Promise(async resolve => {
+    //         for(let i=0;i<ajaxArray.length;i++){
+    //            let res =  await ajaxArray[i]();
+    //            resArr.push(res);
+    //         }
+    //         resolve(resArr); 
+    //     })
+    // };
+
+    // 递归循环
+    const mergePromise = (ajaxArray) => {
+        return new Promise(resolve=>{
+            let num = 0;
+            let resArr = [];
+            function fn(){
+                if(num===ajaxArray.length){
+                    resolve(resArr);
+                    return ;
+                }
+                ajaxArray[num]().then(res=>{
+                    resArr.push(res);
+                    num++;
+                    fn();
+                })
+            }
+            fn();
+        })
+    }
+
+    mergePromise([ajax1, ajax2, ajax3]).then((data) => {
+        console.log("done");
+        console.log(data); // data 为[1,2,3]
+    });
+
+
+
+</script>
+
+</html>

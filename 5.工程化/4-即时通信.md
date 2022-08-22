@@ -1,0 +1,100 @@
+# 4-即时通信
+
+[toc]
+
+
+
+## 1、客户端-服务器模型特性
+
+HTTP 是一个数据传输协议，它主要是用来定义数据是如何进行传输的，以及数据包的格式：
+
+- 客户端 -> 服务端（请求）
+- 服务端 -> 客户端（响应）
+
+问题：服务端不能及时推送数据到客户端。
+
+
+
+## 2、轮询与长轮询
+
+### 2-1、轮询
+
+客户端定时向服务器发送Ajax请求，服务器接到请求后无论是否有响应的数据，都马上返回响应信息并关闭连接。
+
+优点：实现简单。
+
+缺点：浪费带宽和服务器资源，新数据响应会有延迟。
+
+应用：小应用小场景。
+
+### 2-2、长轮询
+
+与简单轮询相似，只是在服务端在没有新的返回数据情况下不会立即响应，而会挂起，直到有数据或即将超时。
+
+优点：实现也不复杂，同时相对轮询，节约带宽。
+
+缺点：所以还是存在占用服务端资源的问题，虽然及时性比轮询要高，但是会在没有数据的时候在服务端挂起，所以会一直占用服务端资源，处理能力变少。
+
+应用：一些早期的对及时性有一些要求的应用：web IM 聊天。
+
+
+
+## 3、SSE（Server Send Event）服务器推送
+
+一个客户端获取新的数据通常需要发送一个请求到服务器，也就是向服务器请求的数据。使用 server-sent 事件，服务器可以在任何时刻向我们的客户端推送数据和信息。这些被推送进来的信息可以在这个客户端上作为 Events + data 的形式来处理。
+
+> 参考：https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events
+
+### 3-1、客户端
+
+**EventSource 类**
+
+使用 EventSource 类接口来完成请求。
+
+```js
+// /getData 为某个获取数据的url
+let source = new EventSource("/users");
+
+source.addEventListener('ping', e => {
+  console.log(e.data);
+  renderUsers(JSON.parse(e.data));
+});
+```
+
+参考：https://developer.mozilla.org/en-US/docs/Web/API/EventSource
+
+### 3-2、服务端
+
+服务端需要做如下一些设置：
+
+**头信息**
+
+```js
+"Content-type": "text/event-stream"
+```
+
+**返回数据格式**
+
+https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+
+```js
+ctx.body = `event: ping\ndata: {"time": "${new Date()}"}\n\n`
+```
+
+> 服务端推送技术还是建立在 服务端主动，客户端还是被动接收的。
+
+
+
+## 4、实时通信
+
+`WebSocket` 是 `HTML5` 开始提供的一种在单个连接上进行全双工通讯的协议。
+
+使用协议：`ws` ，其基于 `HTTP` 协议进行数据传输，但是会持久化链接和状态。
+
+### 4-1、基于 node.js 的 WebSocket 库：socket.io 的使用
+
+https://socket.io/
+
+
+
+## 5、案例：在线聊天应用
